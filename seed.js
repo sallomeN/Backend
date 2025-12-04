@@ -1,10 +1,11 @@
-import axios from "axios";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import LaptopModel from "./models/Laptop.model.js";
+import PhoneModel from "./models/Phone.model.js";
 
-const BASE_URL = "http://localhost:5000";
-
-const laptops = [
+dotenv.config();
+const laptopsArray = [
   {
-    id: "1",
     name: "MacBook Air",
     price: "$1199",
     description:
@@ -14,7 +15,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "2",
     name: "Dell",
     price: "$1000",
     description:
@@ -24,7 +24,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "3",
     name: "HP",
     price: "$995",
     description:
@@ -34,7 +33,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "4",
     name: "Lenovo",
     price: "$899 !!",
     description:
@@ -44,7 +42,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "5",
     name: "Asus ZenBook",
     price: "$950",
     description:
@@ -54,7 +51,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "6",
     name: "Acer Swift",
     price: "$870",
     description:
@@ -64,7 +60,6 @@ const laptops = [
     linkColor: "white",
   },
   {
-    id: "7",
     name: "Microsoft Surface",
     price: "$1100",
     description:
@@ -75,9 +70,8 @@ const laptops = [
   },
 ];
 
-const phones = [
+const phonesArray = [
   {
-    id: "1",
     name: "iPhone 15",
     price: "$999",
     description:
@@ -87,7 +81,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "2",
     name: "Samsung Galaxy A22",
     price: "$680 !!",
     description:
@@ -97,7 +90,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "3",
     name: "Google Pixel 9",
     price: "$790",
     description:
@@ -107,7 +99,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "4",
     name: "Lenovo",
     price: "$699",
     description:
@@ -117,7 +108,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "5",
     name: "Nokia Edge 5G",
     price: "$650",
     description:
@@ -127,7 +117,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "6",
     name: "Huawei Nova 12",
     price: "$720",
     description:
@@ -137,7 +126,6 @@ const phones = [
     linkColor: "#F0F8FF",
   },
   {
-    id: "7",
     name: "OnePlus 12",
     price: "$850",
     description:
@@ -150,20 +138,18 @@ const phones = [
 
 const seedData = async () => {
   try {
-    for (const laptop of laptops) {
-      await axios.post(`${BASE_URL}/api/laptops`, laptop);
-      console.log("Saved laptop:", laptop.name);
-    }
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Database connected!");
 
-    for (const phone of phones) {
-      await axios.post(`${BASE_URL}/api/phones`, phone);
-      console.log("Saved phone:", phone.name);
-    }
+    await LaptopModel.insertMany(laptopsArray);
+    await PhoneModel.insertMany(phonesArray);
 
-    console.log("Seeding completed!");
+    console.log("Seed inserted successfully!");
+
   } catch (err) {
-    console.log("Error:", err.message);
+    console.error("Seed error:", err);
   }
 };
 
 seedData();
+

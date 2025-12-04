@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const phoneSchema = new mongoose.Schema({
-  id: String,
   name: String,
   price: String,
   description: String,
