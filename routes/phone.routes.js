@@ -7,4 +7,14 @@ router.get("/", async (req, res) => {
   const phones = await Phone.find();
   res.json(phones);
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const phone = await PhoneModel.findById(req.params.id);
+    if (!phone) return res.status(404).json({ message: "Not found" });
+    res.json(phone);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 export default router;

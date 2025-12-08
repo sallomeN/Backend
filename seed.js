@@ -13,6 +13,8 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://atlas-content-cdn.pixelsquid.com/stock-images/macbook-air-gold-laptop-72rDZq8-600.jpg",
   },
   {
     name: "Dell",
@@ -22,6 +24,7 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl: "https://www.pngmart.com/files/6/Dell-Laptop-PNG-Pic.png",
   },
   {
     name: "HP",
@@ -31,6 +34,8 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://png.pngtree.com/png-vector/20240206/ourmid/pngtree-hp-laptop-white-background-png-image_11716727.png",
   },
   {
     name: "Lenovo",
@@ -40,6 +45,8 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://crdms.images.consumerreports.org/f_auto,w_600/prod/products/cr/models/415628-15-to-16-inch-laptops-lenovo-ideapad-1i-10041384.png",
   },
   {
     name: "Asus ZenBook",
@@ -49,6 +56,8 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://atlas-content-cdn.pixelsquid.com/stock-images/asus-zenbook-pro-dual-screen-laptop-YeXXVaE-600.jpg",
   },
   {
     name: "Acer Swift",
@@ -58,6 +67,8 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://hnsgsfp.imgix.net/9/images/detailed/103/Acer-SFG14-73T-55BH-Laptop-1.PNG?fit=fill&bg=0FFF&w=1536&h=900&auto=format,compress",
   },
   {
     name: "Microsoft Surface",
@@ -67,8 +78,11 @@ const laptopsArray = [
     background: "#1B1B1B",
     nameColor: "white",
     linkColor: "white",
+    imageUrl:
+      "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/13-laptop-color-center-render-fy25:VP4-1260x795?fmt=png-alpha",
   },
 ];
+
 
 const phonesArray = [
   {
@@ -79,6 +93,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://cdn.new-brz.net/app/public/models/MTP13HX-A/large/w/231108150054570863.webp",
   },
   {
     name: "Samsung Galaxy A22",
@@ -88,6 +104,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a22-1.jpg",
   },
   {
     name: "Google Pixel 9",
@@ -97,6 +115,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://fdn2.gsmarena.com/vv/pics/google/google-pixel-9-pro-1.jpg",
   },
   {
     name: "Lenovo",
@@ -106,6 +126,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://www.pngall.com/wp-content/uploads/8/Lenovo-PNG-High-Quality-Image.png",
   },
   {
     name: "Nokia Edge 5G",
@@ -115,6 +137,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://www.mobilebd.co/wp-content/uploads/2021/05/Nokia-Edge-2020-Official-Image.png",
   },
   {
     name: "Huawei Nova 12",
@@ -124,6 +148,8 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/admin-image/phones/nova-12s/list/blue.png",
   },
   {
     name: "OnePlus 12",
@@ -133,8 +159,11 @@ const phonesArray = [
     background: "black",
     nameColor: "white",
     linkColor: "#F0F8FF",
+    imageUrl:
+      "https://image01.oneplus.net/media/202405/28/b96848b7acd10dafde32203d12f6fea7.png",
   },
 ];
+
 
 const seedData = async () => {
   try {
