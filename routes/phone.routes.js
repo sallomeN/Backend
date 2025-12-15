@@ -1,9 +1,10 @@
 import express from "express";
 import Phone from "../models/Phone.model.js";
+import authMiddleware from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", authMiddleware, async (req, res) => {
   try {
     const phones = await Phone.find();
     res.status(200).json(phones);
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", authMiddleware, async (req, res) => {
   try {
     const phone = await Phone.findById(req.params.id);
     if (!phone) return res.status(404).json({ message: "Not found" });

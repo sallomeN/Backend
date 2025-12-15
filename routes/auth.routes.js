@@ -1,16 +1,21 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import authMiddleware from "../middleware/auth.middleware.js";
 import UserModel from "../models/User.model.js";
 
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
+  
   try {
     const { name, lastName, email, phone, password } = req.body;
 
-    const existingUser = await UserModel.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: "Email already exists" });
+    const existingUsers = await UserModel.find({ email });
+
+    if (existingUsers.length > 0) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -25,6 +30,7 @@ router.post("/register", async (req, res) => {
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
+    // console.log("Body received:", req.body); 
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -45,6 +51,17 @@ router.post("/login", async (req, res) => {
     res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+router.get("/check-token", authMiddleware, async (req, res) => {
+  try {
+    res.status(200).json({
+      message: "Token is valid",
+      userId: req.user.id,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Token check failed" });
   }
 });
 
