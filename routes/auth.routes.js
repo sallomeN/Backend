@@ -82,3 +82,21 @@ router.get("/profile", authMiddleware, async (req, res) => {
 });
 
 export default router;
+
+
+router.put("/profile", authMiddleware, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { name, lastName, email, phone } = req.body;
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { name, lastName, email, phone },
+      { new: true }
+    ).select("-password");
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update profile" });
+  }
+});
